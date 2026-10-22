@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="id" data-theme="light">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Chupi Chat — ngobrol sama Chupi dan Gugugaga</title>
+  <meta name="description" content="Chat langsung dengan ChupiGpt dan GugugagaGpt. Tanpa daftar, tanpa API, jalan 100% di browsermu.">
+  <meta name="theme-color" content="#FFF8EC">
+  <link rel="icon" type="image/png" href="assets/favicon.png">
+  <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+  <script src="js/theme-init.js"></script>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div class="app" id="app" data-sidebar="closed">
+    <div class="scrim" id="scrim" hidden></div>
+
+    <aside class="sidebar" id="sidebar" aria-label="Riwayat chat">
+      <div class="sidebar-head">
+        <div class="brand">
+          <img class="brand-avatar" src="assets/chupi.webp" alt="" width="32" height="32">
+          <span class="brand-name">Chupi Chat</span>
+        </div>
+        <button class="icon-btn sidebar-close" id="closeSidebar" type="button" aria-label="Tutup sidebar" data-icon="x"></button>
+      </div>
+
+      <button class="btn btn-primary new-chat" id="newChat" type="button">
+        <span data-icon="plus" data-icon-size="18"></span>
+        <span>Chat baru</span>
+      </button>
+
+      <nav class="history" id="history" aria-label="Daftar chat"></nav>
+
+      <div class="sidebar-foot">
+        <button class="btn btn-ghost" id="clearAll" type="button" hidden>
+          <span data-icon="trash-2" data-icon-size="16"></span>
+          <span>Hapus semua riwayat</span>
+        </button>
+      </div>
+    </aside>
+
+    <main class="main">
+      <h1 class="sr-only">Chupi Chat</h1>
+
+      <header class="topbar">
+        <button class="icon-btn" id="toggleSidebar" type="button" aria-label="Buka atau tutup sidebar" aria-controls="sidebar" aria-expanded="false" data-icon="panel-left"></button>
+
+        <div class="model-switch">
+          <button class="model-btn" id="modelBtn" type="button" aria-haspopup="menu" aria-expanded="false" aria-controls="modelMenu">
+            <img class="avatar avatar-sm" id="modelBtnAvatar" src="assets/chupi.webp" alt="" width="28" height="28">
+            <span class="model-btn-label" id="modelBtnLabel">ChupiGpt 2.0</span>
+            <span data-icon="chevron-down" data-icon-size="16"></span>
+          </button>
+          <div class="model-menu" id="modelMenu" role="menu" aria-label="Pilih model" hidden></div>
+        </div>
+
+        <button class="icon-btn" id="themeBtn" type="button" aria-label="Ganti tema terang atau gelap"></button>
+      </header>
+
+      <section class="messages" id="messages" role="log" aria-live="polite" aria-label="Percakapan"></section>
+
+      <footer class="composer-wrap">
+        <form class="composer" id="composer" autocomplete="off">
+          <label class="sr-only" for="input">Tulis pesan</label>
+          <textarea id="input" rows="1" maxlength="2000" placeholder="Tulis pesan..." enterkeyhint="send"></textarea>
+          <button class="send-btn" id="sendBtn" type="submit" aria-label="Kirim pesan" data-icon="send" data-icon-size="20" disabled></button>
+        </form>
+        <p class="hint">
+<span data-icon="info" data-icon-size="14"></span><span id="hintText"></span>
+        </p>
+      </footer>
+    </main>
+  </div>
+
+  <dialog class="confirm" id="confirm" aria-labelledby="confirmTitle" aria-describedby="confirmText">
+    <form method="dialog">
+      <h2 id="confirmTitle">Hapus?</h2>
+      <p id="confirmText"></p>
+      <div class="confirm-actions">
+        <button class="btn btn-soft" value="cancel" type="submit">Batal</button>
+        <button class="btn btn-danger" id="confirmOk" value="ok" type="submit">Hapus</button>
+      </div>
+    </form>
+  </dialog>
+
+  <noscript><p class="noscript">Chupi Chat butuh JavaScript supaya bisa dipakai. Aktifkan JavaScript di browsermu ya.</p></noscript>
+
+  <script src="js/engine.js"></script>
+  <script src="js/icons.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
